@@ -39,18 +39,3 @@ int order(invertnode *a) {
 	}
 	return order(a->left) && order(a->right);
 }
-
-void freeinvertlist(invertnode *a) {
-	if (a != NULL) {
-		freeinvertlist(a->left);
-		freeinvertlist(a->right);
-		listnode *prev = a->urlList;
-		while (prev->next != NULL) {
-			a->urlList = a->urlList->next;
-			free(prev);
-			prev = a->urlList;
-		}
-		free(prev);
-		free(a);
-	}
-}
