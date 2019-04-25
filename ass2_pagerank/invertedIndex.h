@@ -3,4 +3,4 @@
 
 
 int order(invertnode *a);
-
+void freeinvertlist(invertnode *);

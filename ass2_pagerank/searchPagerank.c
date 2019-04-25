@@ -167,25 +167,20 @@ void freePgnode(pagenode *L) {
 }
 
 
-int main() {
+int main(int argc,char *argv[]) {
 	searchnode *p;
 	int i;
-	int m = 2;
 	Node *curr;
-	char **str = malloc(3 * sizeof(char *));
-	str[0] = "auh";
-	str[1] = "mars";
-	str[2] = "design";
 	char **str1;
-	str1 = malloc(2 * sizeof(char *));
-	for (i = 0; i < 2; i++) {
-		str1[i] = malloc(strlen(str[i+1]) * sizeof(char));
-		strcpy(str1[i], str[i + 1]);
+	str1 = malloc((argc-1) * sizeof(char *));
+	for (i = 0; i < argc-1; i++) {
+		str1[i] = malloc(strlen(argv[i+1]) * sizeof(char));
+		strcpy(str1[i], argv[i + 1]);
 	}
-	p = readurl(m, str1);
+	p = readurl(argc-1, str1);
 	pagenode *a;
 	a = readrank();
-	for (i = 0; i < m; i++) {
+	for (i = 0; i < argc-1; i++) {
 		curr = p->url[i]->next;
 		while (curr != NULL) {
 			if (calcu(curr->v, a)) {
@@ -201,7 +196,7 @@ int main() {
 		printf("%s\n", a->url);
 		a = a->next;
 	}
-	for (i = 0; i < m; i++) {
+	for (i = 0; i < argc-1; i++) {
 		free(p->words[i]);
 		freeNode(p->url[i]);
 	}

@@ -14,9 +14,9 @@ typedef struct Edge{
 // edges are pairs of vertices (end-points)
 
 
-Graph newGraph(char**);
-void  insertEdge(Graph, Edge);
-void  removeEdge(Graph, Edge);
-bool  adjacent(Graph, Vertex, Vertex);
+Graph newGraph(char**);  					//make new graph
+void  insertEdge(Graph, Edge);  			//insert edges into graph
+void  removeEdge(Graph, Edge);				//remove edge from graph
+bool  adjacent(Graph, Vertex, Vertex);		//judge vertex if they are adjacent 
 void  showGraph(Graph);
-void  freeGraph(Graph); 
+void  freeGraph(Graph); 					//free space

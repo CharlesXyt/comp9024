@@ -6,7 +6,6 @@
 #include <ctype.h>
 #include "readData.h"
 
-
 char *turn(char *str) {
 	char *orign = str;
 	int i;
@@ -14,7 +13,7 @@ char *turn(char *str) {
 		str[i] = tolower(str[i]);
 	return orign;
 }
-
+													// turn the string into lowercase
 listnode *newlistnode(char* a) {
 	listnode *b;
 	b = malloc(sizeof(listnode));
@@ -26,7 +25,7 @@ listnode *newlistnode(char* a) {
 	b->next = NULL;
 	return b;
 }
-
+													//creat and initial new listnode with a
 invertnode *newinvertnode(char* word, char* url) {
 	invertnode *a;
 	a = malloc(sizeof(invertnode));
@@ -38,7 +37,7 @@ invertnode *newinvertnode(char* word, char* url) {
 	a->left = NULL;
 	a->right = NULL;
 	return a;
-}
+}													//creat and initial new invertnode with word and url
 
 int add_in_urllist(listnode *a,char *b){
 	listnode *curr;
@@ -61,7 +60,7 @@ int add_in_urllist(listnode *a,char *b){
 		return 1;
 	}
 	return 0;
-}
+}													//add the new url into the urlList				
 
 int insert_word_in_invertlist(invertnode *a,char *word,char *url) {
 	if (!strcmp(a->key,word)) {
@@ -84,10 +83,7 @@ int insert_word_in_invertlist(invertnode *a,char *word,char *url) {
 	}
 	return 0;
 }
-
-
-
-
+													//insert word in invertlist
 
 char **GetCollection() {
 	FILE *fp;
@@ -111,6 +107,7 @@ char **GetCollection() {
 	fclose(fp);
 	return p;
 }
+													//Create a set (list) of urls to process by	reading	data from file “collection.txt”
 void freeNode(Node *L) {
 	if (L != NULL) {
 		freeNode(L->next);
@@ -168,7 +165,7 @@ Graph GetGraph(char **a) {
 	}
 	return p;
 }
-
+//Create empty graph (use graph	ADT	in say graph.h and graph.c) For	each url in	the	above list read	<url>.txt file,	and	update graph by	adding a node and outgoing links
 
 invertnode *GetinvertedList(char** a) {
 	invertnode *p;
@@ -218,4 +215,7 @@ invertnode *GetinvertedList(char** a) {
 	}
 	return p;
 }
+
+//Create empty inverted	list (use say List of lists, BST where values are lists, etc) For each url in List_of_Urls read <url>.txt file, and update inverted index
+ 
 
